@@ -1,18 +1,18 @@
-#  Lux Imports & DB Importados — Fullstack Project
+# Lux Imports & DB Importados — Fullstack Project
 
 > Curadoria de veículos importados de luxo com alta performance, cache inteligente e painel interativo.
 
-![Banner do Projeto](./README/../car-md.jpg)
+![Banner do Projeto](./car-md.jpg)
 
 ---
 
-##   Autor
+## Autor
 
 - **Carlos Fonseca**
 
 ---
 
-## 📝 Visão Geral do Ecossistema
+## Visão Geral do Ecossistema
 
 Este é um projeto fullstack composto por:
 
@@ -21,10 +21,10 @@ Este é um projeto fullstack composto por:
 
 ---
 
-## 📂 Estrutura de Pastas (Monorepo)
+## Estrutura de Pastas (Monorepo)
 
-```text
-meu-projeto-fullstack/
+```
+luxe-automotive/
 ├── backend/             # API Node.js + Express + Prisma + Redis
 │   ├── prisma/          # Schema do MongoDB
 │   ├── src/             # Código-fonte da API
@@ -36,7 +36,7 @@ meu-projeto-fullstack/
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 ### Frontend (Lux Imports)
 
@@ -55,7 +55,7 @@ meu-projeto-fullstack/
 
 ---
 
-## ⚡ Fluxo de Funcionamento e Integração
+## Fluxo de Funcionamento e Integração
 
 1. **Apresentação:** O frontend renderiza o banner principal, a coleção do mês (3 principais veículos), a seção de história/clássicos e a seção de super carros.
 2. **Consumo de Dados:** Ao clicar para ver a curadoria ou os detalhes ("Ver mais"), o React faz requisições para a API.
@@ -64,71 +64,64 @@ meu-projeto-fullstack/
 
 ---
 
-## 🚀 Como Executar o Projeto
+## Como Executar o Projeto
 
-### 📦 Pré-requisitos
+### Pré-requisitos
 
 - Node.js e Bun instalados.
 - Docker instalado (para rodar o Redis localmente).
 - Conta ou instância do MongoDB (Atlas ou local).
 
----
-
-### 🟢 1. Configurando o Backend
+### 1. Configurando o Backend
 
 1. Abra o terminal na pasta do backend:
 
-   ```bash
-   cd  nome-do-backend
-   ```
+```bash
+cd luxe-automotive/backend
+```
 
 2. Instale as dependências:
 
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
 3. Crie um arquivo `.env` baseado no exemplo abaixo:
 
-   ```env
-   DATABASE_URL="sua_string_de_conexao_mongodb"
-   PORT=3000
-   ```
+```env
+DATABASE_URL="sua_string_de_conexao_mongodb"
+PORT=3000
+```
 
-4. Suba o container do Redis pelo Docker (se configurado localmente) ou garanta que o serviço esteja ativo. *Nota: Se o Redis estiver offline, o sistema continuará funcionando diretamente com o MongoDB.*
-5. Inicie o servidor em modo de desenvolvimento:
+4. Inicie o servidor em modo de desenvolvimento:
 
-   ```bash
-   npm run dev
-   ```
+```bash
+npm run dev
+```
 
----
-
-### 🔵 2. Configurando o Frontend
+### 2. Configurando o Frontend
 
 1. Abra um novo terminal na pasta do frontend:
 
-   ```bash
-   cd nome-do-frontend
-   ```
+```bash
+cd luxe-automotive/frontend
+```
 
-2. Instale as dependências utilizando o **Bun**:
+2. Instale as dependências:
 
-   ```bash
-   bun install
-   ```
+```bash
+bun install
+```
 
 3. Inicie o servidor de desenvolvimento do frontend:
 
-   ```bash
-   bun dev
-   ```
-
-4. Acesse o endereço indicado no terminal (geralmente `http://localhost:5173`) para visualizar a aplicação.
+```bash
+bun dev
+```
 
 ---
 
-## 📡 Endpoints da API para Referência
+## Endpoints da API para Referência
 
 - `GET /veiculos` - Lista todos os veículos (Suporta cache Redis).
 - `GET /veiculos/:id` - Detalhes de um veículo específico.
@@ -137,14 +130,20 @@ meu-projeto-fullstack/
 - `PATCH /veiculos/:id` - Atualização parcial de campos.
 - `DELETE /veiculos/:id` - Remove veículo e invalida cache.
 
-## Observações finais para instalação
+---
 
-- Prisma ORM precisa estar na versão 6.19.3 ,versão 7+ é incompativel. 
-- Conflitos de tipos na pasta index.d.ts podem aparecer.
-- conflitos de EsLint podem ocorrer com caracteres especiais.
-- Auterações do banco de dados tem de ser passados ao prisma com os comandos:
+## Notas do Monorepo
 
-```
-prisma db pull
-prisma generated
-```
+Monorepo com `frontend/` e `backend/` separados. Use os seguintes comandos principais:
+
+- `npm install` (na raiz para instalar workspaces)
+- `npm run build` (constrói backend e frontend)
+- `npm run dev:frontend` / `npm run dev:backend`
+
+---
+
+## Observações finais
+
+- Prisma ORM precisa estar na versão `6.19.3`.
+- Execute `prisma generate` quando necessário.
+- Para deploy no Vercel/Plataformas, configure a rota do frontend e o serviço do backend conforme o provedor.
