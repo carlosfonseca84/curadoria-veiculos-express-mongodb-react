@@ -9,37 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as VeiculosRouteImport } from './routes/veiculos'
-import { Route as SuperCarrosRouteImport } from './routes/super-carros'
-import { Route as SobreRouteImport } from './routes/sobre'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as HistoriaRouteImport } from './routes/historia'
-import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContatoRouteImport } from './routes/contato'
+import { Route as HistoriaRouteImport } from './routes/historia'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SobreRouteImport } from './routes/sobre'
+import { Route as SuperCarrosRouteImport } from './routes/super-carros'
+import { Route as VeiculosRouteImport } from './routes/veiculos'
 
-const VeiculosRoute = VeiculosRouteImport.update({
-  id: '/veiculos',
-  path: '/veiculos',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SuperCarrosRoute = SuperCarrosRouteImport.update({
-  id: '/super-carros',
-  path: '/super-carros',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SobreRoute = SobreRouteImport.update({
-  id: '/sobre',
-  path: '/sobre',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HistoriaRoute = HistoriaRouteImport.update({
-  id: '/historia',
-  path: '/historia',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContatoRoute = ContatoRouteImport.update({
@@ -47,9 +27,29 @@ const ContatoRoute = ContatoRouteImport.update({
   path: '/contato',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const HistoriaRoute = HistoriaRouteImport.update({
+  id: '/historia',
+  path: '/historia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SobreRoute = SobreRouteImport.update({
+  id: '/sobre',
+  path: '/sobre',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuperCarrosRoute = SuperCarrosRouteImport.update({
+  id: '/super-carros',
+  path: '/super-carros',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VeiculosRoute = VeiculosRouteImport.update({
+  id: '/veiculos',
+  path: '/veiculos',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -123,39 +123,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/veiculos': {
-      id: '/veiculos'
-      path: '/veiculos'
-      fullPath: '/veiculos'
-      preLoaderRoute: typeof VeiculosRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/super-carros': {
-      id: '/super-carros'
-      path: '/super-carros'
-      fullPath: '/super-carros'
-      preLoaderRoute: typeof SuperCarrosRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sobre': {
-      id: '/sobre'
-      path: '/sobre'
-      fullPath: '/sobre'
-      preLoaderRoute: typeof SobreRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/historia': {
-      id: '/historia'
-      path: '/historia'
-      fullPath: '/historia'
-      preLoaderRoute: typeof HistoriaRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contato': {
@@ -165,11 +137,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContatoRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/historia': {
+      id: '/historia'
+      path: '/historia'
+      fullPath: '/historia'
+      preLoaderRoute: typeof HistoriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sobre': {
+      id: '/sobre'
+      path: '/sobre'
+      fullPath: '/sobre'
+      preLoaderRoute: typeof SobreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/super-carros': {
+      id: '/super-carros'
+      path: '/super-carros'
+      fullPath: '/super-carros'
+      preLoaderRoute: typeof SuperCarrosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/veiculos': {
+      id: '/veiculos'
+      path: '/veiculos'
+      fullPath: '/veiculos'
+      preLoaderRoute: typeof VeiculosRouteImport
       parentRoute: typeof rootRouteImport
     }
   }

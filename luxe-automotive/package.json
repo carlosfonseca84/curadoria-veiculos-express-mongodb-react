@@ -1,10 +1,7 @@
 {
   "name": "luxe-automotive",
   "private": true,
-  "workspaces": [
-    "frontend",
-    "backend"
-  ],
+
   "scripts": {
     "build": "npm --workspace=backend run build && npm --workspace=frontend run build",
     "lint": "npm --workspace=frontend run lint",
